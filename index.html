@@ -2,19 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Math Solver</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Advanced Scientific Calculator</title>
+  <link rel="stylesheet" href="css/style.css">
   <!-- Load Math.js library from CDN -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.0/math.min.js"></script>
 </head>
 <body>
-  <div class="container">
-    <h1>My Math Solver</h1>
-    <input id="mathInput" type="text" placeholder="Enter math expression">
-    <button id="solveBtn">Solve</button>
-    <div id="result"></div>
+  <div class="calc-container">
+    <h1>Scientific Calculator</h1>
+    
+    <!-- Angle mode toggle -->
+    <div class="angle-mode">
+      <label>
+        <input type="radio" name="angle" value="rad" checked> Radians
+      </label>
+      <label>
+        <input type="radio" name="angle" value="deg"> Degrees
+      </label>
+    </div>
+    
+    <!-- Calculator display (no longer readonly) -->
+    <input type="text" id="display" class="display" placeholder="0">
+    
+    <!-- Memory display -->
+    <div class="memory-display" id="memoryDisplay">Memory: 0</div>
+    
+    <!-- Control buttons: Memory functions & Backspace -->
+    <div class="control-buttons">
+      <button class="btn" id="mc">MC</button>
+      <button class="btn" id="mr">MR</button>
+      <button class="btn" id="mPlus">M+</button>
+      <button class="btn" id="mMinus">M‑</button>
+      <button class="btn" id="backspace">←</button>
+    </div>
+    
+    <!-- Calculator buttons grid -->
+    <div class="buttons">
+      <!-- Advanced functions row -->
+      <button data-value="sin(">sin</button>
+      <button data-value="cos(">cos</button>
+      <button data-value="tan(">tan</button>
+      <button data-value="sinh(">sinh</button>
+      <button data-value="cosh(">cosh</button>
+      <button data-value="tanh(">tanh</button>
+      <button data-value="abs(">abs</button>
+      <button data-value="ln(">ln</button>
+      <button data-value="log(">log</button>
+      <button data-value="sqrt(">√</button>
+      <button data-value="(">(</button>
+      <button data-value=")">)</button>
+      <button data-value="!">!</button>
+      <!-- New derivative button -->
+      <button id="derivative">d/dx</button>
+      <!-- Constants & exponents -->
+      <button data-value="pi">π</button>
+      <button data-value="e">e</button>
+      <button data-value="%">%</button>
+      <button data-value="^">x^y</button>
+      <!-- Additional letter buttons -->
+      <button data-value="x">x</button>
+      <button data-value="y">y</button>
+      <!-- Number pad & basic operators -->
+      <button data-value="7">7</button>
+      <button data-value="8">8</button>
+      <button data-value="9">9</button>
+      <button data-value="/">÷</button>
+      <button data-value="4">4</button>
+      <button data-value="5">5</button>
+      <button data-value="6">6</button>
+      <button data-value="*">×</button>
+      <button data-value="1">1</button>
+      <button data-value="2">2</button>
+      <button data-value="3">3</button>
+      <button data-value="-">−</button>
+      <button data-value="0">0</button>
+      <button data-value=".">.</button>
+      <button id="clear">C</button>
+      <button data-value="+">+</button>
+      <!-- Equals button spans full width -->
+      <button class="equal" id="equals">=</button>
+    </div>
+    
+    <!-- Differential Equations Tools Section -->
+    <div class="de-tools">
+      <h2>Differential Equations Tools</h2>
+      <button id="laplace">Laplace Transform</button>
+      <button id="invlaplace">Inverse Laplace</button>
+      <button id="solveODE">Solve ODE (Euler)</button>
+      <button id="wronskian">Wronskian</button>
+    </div>
+    
+    <!-- History panel -->
+    <div class="history-container" id="historyContainer">
+      <h2>History</h2>
+      <ul id="historyList"></ul>
+    </div>
+    
+    <!-- Step-by-step explanation panel -->
+    <div class="steps-container" id="stepsContainer">
+      <h2>Steps</h2>
+      <p id="stepsText">Step-by-step explanation not available.</p>
+    </div>
   </div>
-  <script src="js/script.js"></script>
+
+  <!-- Load custom scripts -->
+  <script src="js/utils.js"></script>
+  <script src="js/mathEngine.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
